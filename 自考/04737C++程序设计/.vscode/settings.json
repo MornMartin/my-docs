@@ -12,6 +12,8 @@
         "*.tcc": "cpp",
         "deque": "cpp",
         "unordered_map": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "string_view": "cpp",
+        "iostream": "cpp"
     }
 }
