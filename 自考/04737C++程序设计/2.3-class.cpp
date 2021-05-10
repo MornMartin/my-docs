@@ -32,5 +32,10 @@ int Persion::getAge(int currentYear) {
     return currentYear - birthDay.year;
 }
 string Persion::say() {
-    return "Hello, I'm " + name + ". I'm ";
+    int age = getAge(2021);
+    return "Hello, I'm " + name + ". I'm " + to_string(age);
 };
+
+int main() {
+    return 0;
+}
