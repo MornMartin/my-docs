@@ -23,9 +23,9 @@ class Persion {
 Persion::Persion() {
  // do nothing
 };
-Persion::Persion(string name) {
+Persion::Persion(string n) {
     // 访问成员变量直接用变量名
-    name = name;
+    name = n;
 };
 int Persion::getAge(int currentYear) {
     // 访问其他对象的成员变量使用"."
