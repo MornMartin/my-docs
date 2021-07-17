@@ -2,23 +2,24 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(Windows) Launch",
-            "type": "cppvsdbg",
+            "name": "(gdb) 启动",
+            "type": "cppdbg",
             "request": "launch",
-            "program": "cmd",
-            "preLaunchTask": "echo",
-            "args": [
-                "/C",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe",
-                "&",
-                "echo.",
-                "&",
-                "pause"
-            ],
+            "program": "${workspaceFolder}/${fileBasenameNoExtension}.out",
+            "args": [],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
+            "cwd": "${fileDirname}",
             "environment": [],
-            "externalConsole":true
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "preLaunchTask": "compile-out",//这里和task.json的label相对应
+            "setupCommands": [
+                {
+                    "description": "为 gdb 启用整齐打印",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
         },
         {
             "name": "(gdb) Launch",
@@ -32,15 +33,34 @@
             "externalConsole": true,
             "MIMode": "gdb",
             "miDebuggerPath": "D:\\Program Files\\mingw64\\bin\\gdb.exe",// 自己电脑的gdb
-            "preLaunchTask": "echo",//这里和task.json的label相对应
+            "preLaunchTask": "compile-exe",//这里和task.json的label相对应
             "setupCommands": [
                 {
-                    "description": "Enable pretty-printing for gdb",
+                    "description": "为 gdb 启用整齐打印",
                     "text": "-enable-pretty-printing",
                     "ignoreFailures": true
                 }
             ]
  
+        },
+        {
+            "name": "(Windows) Launch",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "cmd",
+            "preLaunchTask": "compile-exe",
+            "args": [
+                "/C",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "&",
+                "echo.",
+                "&",
+                "pause"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole":true
         }
     ]
 }

@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "echo",
+            "label": "compile-exe",
             "type": "shell",
             "command": "gcc",
             "args": [
@@ -13,6 +13,19 @@
                 "-o", 
                 "${fileBasenameNoExtension}.exe",
                 "-fexec-charset=GBK",//解决中文乱码
+                "-lstdc++"
+            ]
+        },
+        {
+            "label": "compile-out",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g", 
+                "${file}", 
+                "-o", 
+                "${fileBasenameNoExtension}.out",
+                "-fexec-charset=UTF-8",//解决中文乱码
                 "-lstdc++"
             ]
         }
